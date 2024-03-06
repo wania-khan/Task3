@@ -14,9 +14,9 @@ item.textContent = array[index]; //Assign the above confirmed shuffled number
 });
 }
 //Module2:
-draggedItem = null;
+dragged = null;
 function drag(event) {
-  draggedItem = event.target;
+  dragged = event.target;
 }
   function allowDrop(event) {
     event.preventDefault();
@@ -27,10 +27,10 @@ function drag(event) {
   
   function drop(event) {
     event.preventDefault();
-    if (draggedItem != event.target) {
+    if (dragged != event.target) {
         const temp = event.target.textContent;
-        event.target.textContent = draggedItem.textContent;
-        draggedItem.textContent = temp;
+        event.target.textContent = dragged.textContent;
+        dragged.textContent = temp;
       }
     }
     
