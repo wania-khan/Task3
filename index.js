@@ -37,12 +37,12 @@ function drag(event) {
     }
     function checkOrder() {
         const gridItems = document.querySelectorAll('.grid-item');
-        start = 1; // Starting number expected in the sequence 123456789
+        start = 1; // Starting number in the sequence 123456789
         for (let i = 0; i < gridItems.length; i++) {
           if (parseInt(gridItems[i].textContent) != start) {
             return; // If any block is out of sequence, exit the function
           }
           start++;
         }
-        alert('You won!');  // If the loop completes without returning, order is 123456789
+        alert('You won!');  // If the loop completes without returning, sequence of blocks is 123456789
       }
