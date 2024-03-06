@@ -1,4 +1,4 @@
-//Module1:
+//Module 1:
 const gridItems = document.querySelectorAll('.grid-item');
 const array = [...Array(9)].map((_, index) => index + 1); //Array with index from 1 to 9
 function rand() {
@@ -13,7 +13,7 @@ gridItems.forEach((item, index) => {
 item.textContent = array[index]; //Assign the above confirmed shuffled number
 });
 }
-//Module2:
+//Module 2:
 dragged = null;
 function drag(event) {
   dragged = event.target;
@@ -31,6 +31,18 @@ function drag(event) {
         const temp = event.target.textContent;
         event.target.textContent = dragged.textContent;
         dragged.textContent = temp;
+        //Module 3:
+        checkOrder();
       }
     }
-    
+    function checkOrder() {
+        const gridItems = document.querySelectorAll('.grid-item');
+        start = 1; // Starting number expected in the sequence
+        for (let i = 0; i < gridItems.length; i++) {
+          if (parseInt(gridItems[i].textContent) != start) {
+            return; // If any block is out of order, exit the function
+          }
+          start++;
+        }
+        alert('You won!');  // If the loop completes without returning, order is 123456789
+      }
