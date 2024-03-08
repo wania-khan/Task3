@@ -1,6 +1,7 @@
 //Module 1:
 const gridItems = document.querySelectorAll('.grid-item');
 const array = [...Array(9)].map((_, index) => index + 1); //Array with index from 1 to 9
+
 function rand() {
 array.forEach((a, index) => {
 let randomIndex = Math.floor(Math.random() * array.length); // Generate a random index to assign 
@@ -12,7 +13,9 @@ array[randomIndex] = temp;
 gridItems.forEach((item, index) => {
 item.textContent = array[index]; //Assign the above confirmed shuffled number
 });
+startTimer();
 }
+
 //Module 2:
 dragged = null;
 function drag(event) {
@@ -37,12 +40,41 @@ function drag(event) {
     }
     function checkOrder() {
         const gridItems = document.querySelectorAll('.grid-item');
-        start = 1; // Starting number in the sequence 123456789
+        start = 1; // Starting number in the sequence 1-23456789
         for (let i = 0; i < gridItems.length; i++) {
           if (parseInt(gridItems[i].textContent) != start) {
             return; // If any block is out of sequence, exit the function
           }
           start++;
-        }
-        alert('You won!');  // If the loop completes without returning, sequence of blocks is 123456789
+        }      
+      }
+      clearInterval(timerInterval); // stop the timer when the grid is arranged
+     if (start == 10) {
+      alert("Congratulations, you won!");
+    }  
+     else {
+      alert("You lost"); //oops
+    }
+//Module 4:
+let min = 0;
+let sec = 0;
+let timerInterval;
+
+function startGame() {
+  rand(); // Generate random numbers
+  startTimer(); // Start the timer
+}
+
+function startTimer() {
+  min = 0;
+  sec = 0;
+  timerInterval = setInterval(updateTimer, 1000); // Update timer every second
+  }
+      
+  function updateTimer() {
+    sec++;
+    if (sec >= 60) {
+      sec = 0;
+      min++;
+      }
       }
