@@ -49,14 +49,14 @@ function checkOrder() {
         start++;
     }
     // If all blocks are in the correct order, stop the timer and display alert
-    clearInterval(timerInterval);
+    clearInterval(timer);
     alert("Congratulations, you won!");
 }
 
 // Module 4: 
 let timer;
 function startTimer() {
-    let sec = 60;
+    let sec = 15;
     const timerDisplay = document.getElementById('timer');
     timerDisplay.textContent = format(sec);
 
